@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session Three - Layouts & Tables</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.7.32/sweetalert2.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.7.32/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="shortcut icon" href="../Images/favicon.svg" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanchenjunga:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body { font-family: "Kanchenjunga", sans-serif; }
+         .prose {
+            b { color: fuchsia; font-size: 2em; }
+            h1 { border: dashed; font-family: Tahoma, sans-serif; }
+            p { font-weight: 500; font-style: italic; text-decoration: overline underline line-through dashed white;
+                text-transform: uppercase; text-align: justify; }
+            li { list-style-type: decimal-leading-zero; }
+        }
+        #tst { color: rgb(11, 75, 148); }
+        .tst2 { color: red; background-color: paleturquoise; }
+        table { border: solid; border-collapse: collapse; width: 100%; }
+        th, td { border: solid; }
+        .table2 { border: solid #fff; border-collapse: collapse; width: 100%; height: 100vh; }
+        .table2 td { border: solid #fff; color: #fff; text-align: center; font-size: 30px; }
+        .divs { width: 100%; height: 100vh; color: #fff; text-align: center;
+                background-image: linear-gradient(to right,#0a042d,rgb(10, 24, 106)); }
+        .divs div { border: 1px solid #fff; font-size: 22px; float: left; line-height: 1.5; }
+        header .top { width: 100%; height: 71px; }
+        main section { width: calc(100%/3); float: left; }
+        .bottom, footer { width: 100%; height: 71px; }
+        .bottom-left { width: calc(75% - 2px); height: 100%; }
+        .bottom-right { width: calc(25% - 2px); height: 100%; }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+
+    <header class="bg-white dark:bg-gray-800 shadow-md fixed w-full top-0 z-50 transition-colors duration-300">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img src="../Images/logo.svg" alt="Logo" class="h-8 w-8" />
+                <span class="font-bold text-xl text-gray-800 dark:text-white">DEY Web Design</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="../../index.html" class="nav-link text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors duration-300">Home</a>
+                <a href="/assets/pages/about.html" class="nav-link text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors duration-300">About</a>
+                <a href="./index.html" class="nav-link text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors duration-300">Training Modules</a>
+                <a href="/" class="nav-link text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors duration-300">Sessions</a>
+                <a href="/contact" class="nav-link text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors duration-300">Contact</a>
+            </div>
+            <div class="hidden md:flex items-center space-x-4">
+                <button id="theme-toggle" class="theme-toggle bg-gray-300 dark:bg-blue-600 flex items-center focus:outline-none">
+                    <span class="toggle-circle bg-white dark:bg-white shadow-md"></span>
+                </button>
+            </div>
+            <div class="md:hidden flex items-center space-x-2">
+                <button id="mobile-theme-toggle" class="theme-toggle bg-gray-300 dark:bg-blue-600 flex items-center focus:outline-none">
+                    <span class="toggle-circle bg-white dark:bg-white shadow-md"></span>
+                </button>
+                <button id="mobile-menu-button" class="text-gray-600 dark:text-gray-300 focus:outline-none">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        <path id="close-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="md:hidden hidden bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+            <div class="container mx-auto px-4 py-3 space-y-3">
+                <a href="../../index.html" class="block text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 px-3 py-2 rounded-md transition-colors duration-300">Home</a>
+                <a href="#" class="block text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover-bg-gray-50 dark:hover:bg-gray-700 px-3 py-2 rounded-md transition-colors duration-300">About</a>
+                <a href="./index.html" class="block text-gray-600 dark:text-gray-300 hover-text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 px-3 py-2 rounded-md transition-colors duration-300">Training Modules</a>
+                <a href="#" class="block text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover-bg-gray-50 dark:hover:bg-gray-700 px-3 py-2 rounded-md transition-colors duration-300">Sessions</a>
+                <a href="#" class="block text-gray-600 dark:text-gray-300 hover-text-blue-600 dark:hover:text-blue-400 hover-bg-gray-50 dark:hover:bg-gray-700 px-3 py-2 rounded-md transition-colors duration-300">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container mt-20 mx-auto p-4 md:p-8">
+        <h1 class="text-3xl font-bold text-gray-800 mb-6 dark:text-gray-200">Session Three - Layouts & Tables</h1>
+
+        <div class="bg-white rounded-lg shadow-md mb-8 dark:bg-gray-800">
+            <div class="px-4 py-3 bg-gray-100 border-b border-gray-200 dark:bg-gray-700 dark:border-gray-600">
+                <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-200">HTML & Inline Styles</h2>
+            </div>
+            <div class="p-4 md:p-6">
+                <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2">Code</h3>
+                <div class="bg-gray-800 rounded-md overflow-hidden mb-4">
+                    <div class="flex items-center justify-between px-4 py-2 bg-gray-700 text-gray-100">
+                        <span class="font-mono text-sm">index.html</span>
+                        <button class="bg-blue-500 hover:bg-blue-700 text-sm text-white font-bold py-1 px-2 rounded" onclick="copyBlock(this)">Copy</button>
+                    </div>
+                    <pre class="p-4 text-gray-300 font-mono text-sm overflow-x-auto"><code class="language-html">
+&lt;div&gt;
+  &lt;i class="fas fa-home fa-shake fa-2xl"&gt;&lt;/i&gt;
+  &lt;h1&gt;Session three&lt;/h1&gt;
+  &lt;p id="tst"&gt;…&lt;/p&gt;
+  &lt;p class="tst2"&gt;…&lt;/p&gt;
+  &lt;table&gt;…&lt;/table&gt;
+&lt;/div&gt;
+                    </code></pre>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2">Preview</h3>
+                <div class="prose prose-sm max-w-none dark:prose-invert px-4 py-6 bg-gray-50 dark:bg-gray-900">
+                    <i class="fas fa-home fa-shake fa-2xl"></i>
+                    <h1>Session three</h1>
+                    <p id="tst">Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
+                    <p class="tst2">Lorem ipsum dolor, sit amet consectetur adipisicing elit...</p>
+                    <table>
+                        <tr><th colspan="4">name</th></tr>
+                        <tr><td>5</td><td>6</td><td>7</td><td>8</td></tr>
+                        <tr><td>9</td><td>10</td><td>11</td><td>12</td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md mb-8 dark:bg-gray-800">
+            <div class="px-4 py-3 bg-gray-100 border-b border-gray-200 dark:bg-gray-700 dark:border-gray-600">
+                <h2 class="text-xl	font-semibold text-gray-800 dark:text-gray-200">Merged Table Cells</h2>
+            </div>
+            <div class="p-4 md:p-6">
+                <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2">Code</h3>
+                <div class="bg-gray-800 rounded-md overflow-hidden mb-4">
+                    <div class="flex items-center justify-between px-4 py-2 bg-gray-700 text-gray-100">
+                        <span class="font-mono text-sm">index.html</span>
+                        <button class="bg-blue-500 hover:bg-blue-700 text-sm text-white font-bold py-1 px-2 rounded" onclick="copyBlock(this)">Copy</button>
+                    </div>
+                    <pre class="p-4 text-gray-300 font-mono text-sm overflow-x-auto"><code class="language-html">
+&lt;div style="background-image: linear-gradient(to right,#0a042d,rgb(10, 24, 106)); height:100vh;"&gt;
+  &lt;table class="table2"&gt;…&lt;/table&gt;
+&lt;/div&gt;
+                    </code></pre>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2">Preview</h3>
+                <div class="prose prose-sm max-w-none dark:prose-invert px-4 py-6 divs">
+                    <table class="table2">
+                        <tr><td colspan="3">1</td></tr>
+                        <tr><td rowspan="2">1</td><td style="background-color:red;">2</td><td rowspan="2">3</td></tr>
+                        <tr><td style="background-color:green;">x</td></tr>
+                        <tr><td rowspan="2">1</td><td style="background-color:green;">x</td><td rowspan="2">3</td></tr>
+                        <tr><td style="background-color:red;">2</td></tr>
+                        <tr><td colspan="2">1</td><td>2</td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md dark:bg-gray-800">
+            <div class="px-4 py-3 bg-gray-100 border-b border-gray-200 dark:bg-gray-700 dark:border-gray-600">
+                <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-200">CSS Grid with <code>&lt;div&gt;</code> Layout</h2>
+            </div>
+            <div class="p-4 md:p-6">
+                <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2">Code</h3>
+                <div class="bg-gray-800 rounded-md overflow-hidden mb-4">
+                    <div class="flex items-center justify-between px-4 py-2 bg-gray-700 text-gray-100">
+                        <span class="font-mono text-sm">index.html</span>
+                        <button class="bg-blue-500 hover:bg-blue-700 text-sm text-white font-bold py-1 px-2 rounded" onclick="copyBlock(this)">Copy</button>
+                    </div>
+                    <pre class="p-4 text-gray-300 font-mono text-sm overflow-x-auto"><code class="language-html">
+&lt;div class="divs"&gt;…&lt;/div&gt;
+                    </code></pre>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2">Preview</h3>
+                <div class="prose prose-sm max-w-none dark:prose-invert px-4 py-6 divs">
+                    <h1 style="margin:0;">the same design Using Divs</h1>
+                    <header><div class="top">Top</div></header>
+                    <main>
+                        <section><div class="left"><div>left top</div><div>left bottom</div></div></section>
+                        <section><div class="center"><div>center top</div><div>center middle</div><div>center bottom</div></div></section>
+                        <section><div class="right"><div>right top</div><div>right bottom</div></div></section>
+                    </main>
+                    <footer><div class="bottom"><div class="bottom-left">bottom left</div><div class="bottom-right">bottom right</div></div></footer>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function copyBlock(btn) {
+            const code = btn.closest('div').querySelector('code').innerText;
+            navigator.clipboard.writeText(code).then(() => {
+                btn.textContent = 'Copied!';
+                setTimeout(() => btn.textContent = 'Copy', 2000);
+            });
+        }
+    </script>
+    <script src="../JS/main.js"></script>
+</body>
+
+</html>

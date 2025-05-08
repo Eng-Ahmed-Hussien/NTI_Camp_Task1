@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Session two - Anchore tag</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.js"></script>
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.7.32/sweetalert2.min.css">
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.7.32/sweetalert2.all.min.js"></script>
+        <link rel="stylesheet" href="../CSS/style.css">
+        <link rel="shortcut icon" href="../Images/favicon.svg" type="image/x-icon">
+        <style>
+            .prose 
+            {
+                b {
+                    color: fuchsia;
+                    font-size: 2em;
+                }
+
+                h1 {
+                
+                    border: dashed;
+                    font-family: Tahoma, sans-serif;
+                }
+
+                p {
+                    font-weight: 500;
+                    font-style: italic;
+                    text-decoration: overline underline line-through dashed white;
+                    text-transform: uppercase;
+                    text-align: justify;
+                }
+
+                li {
+                    list-style-type: decimal-leading-zero;
+                }
+            }
+        </style>
+    </head>
+
+    <body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+        <header class="bg-white dark:bg-gray-800 shadow-md fixed w-full top-0 z-50 transition-colors duration-300">
+            <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <img src="../Images/logo.svg" alt="Logo" class="h-8 w-8" />
+                    <span class="font-bold text-xl text-gray-800 dark:text-white">DEY Web Design</span>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="../../index.html"
+                        class="nav-link text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors duration-300">Home</a>
+                    <a href="/assets/pages/about.html"
+                        class="nav-link text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors duration-300">About</a>
+                    <a href="./index.html"
+                        class="nav-link text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors duration-300">Training
+                        Modules</a>
+                    <a href="/"
+                        class="nav-link text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors duration-300">Sessions</a>
+                    <a href="/contact"
+                        class="nav-link text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors duration-300">Contact</a>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-4">
+                    <button id="theme-toggle"
+                        class="theme-toggle bg-gray-300 dark:bg-blue-600 flex items-center focus:outline-none">
+                        <span class="toggle-circle bg-white dark:bg-white shadow-md"></span>
+                    </button>
+                </div>
+
+                <div class="md:hidden flex items-center space-x-2">
+                    <button id="mobile-theme-toggle"
+                        class="theme-toggle bg-gray-300 dark:bg-blue-600 flex items-center focus:outline-none">
+                        <span class="toggle-circle bg-white dark:bg-white shadow-md"></span>
+                    </button>
+                    <button id="mobile-menu-button" class="text-gray-600 dark:text-gray-300 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                            <path id="close-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+            </nav>
+
+            <div id="mobile-menu"
+                class="md:hidden hidden bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+                <div class="container mx-auto px-4 py-3 space-y-3">
+                    <a href="../../index.html"
+                        class="block text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 px-3 py-2 rounded-md transition-colors duration-300">Home</a>
+                    <a href="#"
+                        class="block text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 px-3 py-2 rounded-md transition-colors duration-300">About</a>
+                    <a href="./index.html"
+                        class="block text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 px-3 py-2 rounded-md transition-colors duration-300">Training
+                        Modules</a>
+                    <a href="#"
+                        class="block text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 px-3 py-2 rounded-md transition-colors duration-300">Sessions</a>
+                    <a href="#"
+                        class="block text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-700 px-3 py-2 rounded-md transition-colors duration-300">Contact</a>
+                </div>
+            </div>
+        </header>
+        <div class="container mt-20 mx-auto p-4 md:p-8">
+            <h1 class="text-3xl font-bold text-gray-800 mb-6 dark:text-gray-200">
+                Session Two - Anchore tag
+            </h1>
+
+            <p class="text-gray-700 mb-4 dark:text-gray-300">
+                In this session, we will explore the structure of an HTML document and the use of various HTML elements.
+                We will cover the following topics:
+            <ul class="list-disc list-inside ml-4 mb-4 italic">
+                <li>Understanding the basic structure of an HTML document</li>
+                <li>Using headings, paragraphs, and lists</li>
+                <li>Creating links and anchors</li>
+                <li>Embedding images and other media</li>
+                <li>Using inline styles and classes</li>
+            </ul>
+
+            </p>
+
+            <div class="bg-white rounded-lg shadow-md overflow-hidden dark:bg-gray-800">
+                <div
+                    class="px-4 py-4 md:px-6 md:py-4 bg-gray-100 border-b border-gray-200 dark:bg-gray-700 dark:border-gray-600">
+                    <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-200">
+                        <!-- session content : ol& ul & dl & all a tag usage & inline style  -->
+                        Lists & Anchor tag
+                    </h2>
+                    <p class="text-gray-600 mt-1 dark:text-gray-400">
+                        In this session, we will explore the use of lists and anchor tags in HTML. Lists are used to
+                        group related items together, while anchor tags are used to create hyperlinks to other pages or
+                        sections within a page. We will also cover the use of inline styles to customize the appearance
+                        of our content.
+                    </p>
+                </div>
+                <div class="p-4 md:p-6">
+                    <div class="mb-4">
+                        <h3 class="text-lg font-semibold text-gray-700 mb-2 dark:text-gray-300">
+                            HTML Document Structure
+                        </h3>
+                        <div class="bg-gray-800 rounded-md overflow-hidden">
+                            <div
+                                class="flex flex-col md:flex-row items-center justify-between px-4 py-2 bg-gray-700 text-gray-100">
+                                <span class="font-mono text-sm">index.html</span>
+                                <div class="flex items-center mt-2 md:mt-0">
+                                    <span class="mr-2 font-mono text-sm text-blue-300">HTML & css</span>
+                                    <button
+                                        class="bg-blue-500 hover:bg-blue-700 text-white text-sm font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+                                        onclick="copyToClipboard(this)">
+                                        Copy
+                                    </button>
+                                </div>
+                            </div>
+                            <pre class="p-4 text-gray-300 font-mono text-sm overflow-x-auto"><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;
+        Session two - Anchore tag
+    &lt;/title&gt;
+    &lt;link rel="icon" href="favicon.svg"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;h1 style="background-color:bisque;text-align: center;" id="top"&gt;
+    Session Two
+&lt;/h1&gt;
+&lt;p&gt;
+    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+    Eius magni officia fugiat illum libero,
+    quas deserunt beatae, distinctio cumque quia ducimus sit voluptas iste,&lt;br&gt;
+    quaerat aperiam? Vel earum rem nam.
+&lt;/p&gt;
+&lt;pre&gt;
+    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    Blanditiis at velit, ipsam dolorem iusto fuga magni aliquam
+    enim amet incidunt sit eaque perferendis eius, 
+    doloribus cupiditate accusantium nam. Veritatis, nisi.
+&lt;/pre&gt;
+&lt;h2 style="text-align: center;"&gt;
+    &lt;img src="https://th.bing.com/th/id/R.8693c5c5f91aa52c0ecfc14e7044fe0b?rik=3%2b1hFItj2tAQDA&amp;riu=http%3a%2f%2ffoodelhi.
+    in%2fwp-content%2fuploads%2f2017%2f08%2fIMG_20170819_162616_187.jpg&amp;ehk=dgetZA0wSUFW8ev0tfuaGi0Zn1aEHSqE%2fKbCX4OUsXk%3d
+    &amp;risl=&amp;pid=ImgRaw&amp;r=0" width="150" height="100" alt="">
+&lt;/h2&gt;
+&lt;a href="https://th.bing.com/th/id/R.8693c5c5f91aa52c0ecfc14e7044fe0b?rik=3%2b1hFItj2tAQDA&amp;riu=http%3a%2f%2ffoodelhi.
+in%2fwp-content%2fuploads%2f2017%2f08%2fIMG_20170819_162616_187.jpg&amp;ehk=dgetZA0wSUFW8ev0tfuaGi0Zn1aEHSqE%2fKbCX4OUsXk%3d
+&amp;risl=&amp;pid=ImgRaw&amp;r=0" target="_parent"&gt;
+    &lt;img src="https://th.bing.com/th/id/R.8693c5c5f91aa52c0ecfc14e7044fe0b?rik=3%2b1hFItj2tAQDA&amp;riu=http%3a%2f%2ffoodelhi.
+    in%2fwp-content%2fuploads%2f2017%2f08%2fIMG_20170819_162616_187.jpg&amp;ehk=dgetZA0wSUFW8ev0tfuaGi0Zn1aEHSqE%2fKbCX4OUsXk%3d
+    &amp;risl=&amp;pid=ImgRaw&amp;r=0" alt="" style="float:right; width: 50px; height: 50px;" &gt;
+&lt;/a&gt;
+&lt;a href="https://google.com"&gt;online link&lt;/a&gt;
+&lt;a href="../session-one/index.html"&gt;Offline page&lt;/a&gt;
+&lt;a href="#top"&gt;Back to top&lt;/a&gt;
+&lt;a href="http://wa.me/+201009051159?text=السلام عليكم"&gt;Send what's app&lt;/a&gt;
+&lt;a href="http://t.me/+201009051159"&gt;Telegram&lt;/a&gt;
+&lt;a href="tel:+201009051159"&gt;call&lt;/a&gt;
+&lt;a href="sms:+201009051159"&gt;SMS&lt;/a&gt;
+&lt;a href="../MJEER-Volume 33-Issue 2- Page 32-40.pdf"&gt;PDF&lt;/a&gt;
+&lt;a href="../paper 2- A Hybrid Vision Transformer and transfer leerning models Brain Tumor Classification.docx"&gt;Word&lt;/a&gt;
+&lt;a href="../session-one/index.html#test"&gt;Part of page&lt;/a&gt;
+&lt;a href="mailto:monyibrahim16@gmail.com?cc=amanyibrahim.mis@ci.menofia.edu.eg&bcc=a.ibrahim@el-eng.menofia.edu.eg&subject=hi 
+all&body=welcome back"&gt;Mail&lt;/a&gt;
+&lt;ul type="disc"&gt;
+    &lt;li&gt;
+        Item1
+    &lt;/li&gt;
+    &lt;li&gt;
+        Item2
+    &lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol type="B"&gt;
+    &lt;li&gt;
+        item1
+    &lt;/li&gt;
+    &lt;li&gt;
+        Item 2
+    &lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;
+    Web Design &lt;mark&gt;Front end&lt;/mark&gt;
+&lt;/h2&gt;
+&lt;ol &gt;
+    &lt;li&gt;
+        HTML
+        &lt;ul&gt;
+            &lt;li&gt;
+                images
+            &lt;/li&gt;
+            &lt;li&gt;
+                Tables
+                &lt;ol &gt;
+                    &lt;li&gt;
+                        table
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                        tr
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                        td
+                    &lt;/li&gt;
+                &lt;/ol&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                Anchore tag
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        CSS
+    &lt;/li&gt;
+    JS
+    &lt;li&gt;
+        BootStrap
+    &lt;/li&gt;
+&lt;/ol&gt;
+&lt;dl&gt;
+    &lt;dt&gt;
+        HTML
+    &lt;/dt&gt;
+    &lt;dd&gt;
+        &lt;b style="color:black"&gt;H&lt;/b&gt;yper &lt;b&gt;T&lt;/b&gt;ext &lt;b&gt;M&lt;/b&gt;arkup &lt;b&gt;L&lt;/b&gt;anguage
+    &lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+                        </code></pre>
+                        </div>
+                    </div>
+                    <div class="border rounded-md p-4 bg-gray-100 dark:bg-gray-700 dark:border-gray-600">
+                        <h4 class="text-md font-semibold text-gray-700 mb-2 dark:text-gray-300">Live Preview</h4>
+                        <div class="prose prose-sm max-w-none dark:prose-invert px-10">
+
+
+                            <h1 style="background-color:bisque;text-align: center;" id="top">
+                                Session Two
+                            </h1>
+                            <p>
+                                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+
+                                Eius magni officia fugiat illum libero,
+
+                                quas deserunt beatae, distinctio cumque quia ducimus sit voluptas iste,<br>
+                                quaerat aperiam? Vel earum rem nam.
+                            </p>
+                            <pre>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                Blanditiis at velit, ipsam dolorem iusto fuga magni aliquam
+                                enim amet incidunt sit eaque perferendis eius, 
+                                doloribus cupiditate accusantium nam. Veritatis, nisi.
+                            </pre>
+                            <h2 style="text-align: center;">
+                                <img src="https://th.bing.com/th/id/R.8693c5c5f91aa52c0ecfc14e7044fe0b?rik=3%2b1hFItj2tAQDA&riu=http%3a%2f%2ffoodelhi.in%2fwp-content%2fuploads%2f2017%2f08%2fIMG_20170819_162616_187.jpg&ehk=dgetZA0wSUFW8ev0tfuaGi0Zn1aEHSqE%2fKbCX4OUsXk%3d&risl=&pid=ImgRaw&r=0"
+                                    width="150" height="100" alt="">
+                            </h2>
+                            <a href="https://th.bing.com/th/id/R.8693c5c5f91aa52c0ecfc14e7044fe0b?rik=3%2b1hFItj2tAQDA&riu=http%3a%2f%2ffoodelhi.in%2fwp-content%2fuploads%2f2017%2f08%2fIMG_20170819_162616_187.jpg&ehk=dgetZA0wSUFW8ev0tfuaGi0Zn1aEHSqE%2fKbCX4OUsXk%3d&risl=&pid=ImgRaw&r=0"
+                                target="_parent">
+                                <img src="https://th.bing.com/th/id/R.8693c5c5f91aa52c0ecfc14e7044fe0b?rik=3%2b1hFItj2tAQDA&riu=http%3a%2f%2ffoodelhi.in%2fwp-content%2fuploads%2f2017%2f08%2fIMG_20170819_162616_187.jpg&ehk=dgetZA0wSUFW8ev0tfuaGi0Zn1aEHSqE%2fKbCX4OUsXk%3d&risl=&pid=ImgRaw&r=0"
+                                    alt="" style="float:right; width: 50px; height: 50px;">
+                            </a>
+                            <a href="https://google.com">online link</a>
+                            <a href="../session-one/index.html">Offline page</a>
+                            <a href="#top">Back to top</a>
+                            <a href="http://wa.me/+201009051159?text=السلام عليكم">Send what's app</a>
+                            <a href="http://t.me/+201009051159">Telegram</a>
+                            <a href="tel:+201009051159">call</a>
+                            <a href="sms:+201009051159">SMS</a>
+                            <a href="../MJEER-Volume 33-Issue 2- Page 32-40.pdf">PDF</a>
+                            <a
+                                href="../paper 2- A Hybrid Vision Transformer and transfer leerning models Brain Tumor Classification.docx">Word</a>
+                            <a href="../session-one/index.html#test">Part of page</a>
+                            <a
+                                href="mailto:monyibrahim16@gmail.com?cc=amanyibrahim.mis@ci.menofia.edu.eg&bcc=a.ibrahim@el-eng.menofia.edu.eg&subject=hi all&body=welcome back">Mail</a>
+                            <ul type="disc">
+                                <li>
+                                    Item1
+                                </li>
+                                <li>
+                                    Item2
+                                </li>
+                            </ul>
+                            <ol type="B">
+                                <li>
+                                    item1
+                                </li>
+                                <li>
+                                    Item 2
+                                </li>
+                            </ol>
+                            <h2>
+                                Web Design <mark>Front end</mark>
+                            </h2>
+                            <ol>
+                                <li>
+                                    HTML
+                                    <ul>
+                                        <li>
+                                            images
+                                        </li>
+                                        <li>
+                                            Tables
+                                            <ol>
+                                                <li>
+                                                    table
+                                                </li>
+                                                <li>
+                                                    tr
+                                                </li>
+                                                <li>
+                                                    td
+                                                </li>
+                                            </ol>
+                                        </li>
+                                        <li>
+                                            Anchore tag
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    CSS
+                                </li>
+                                JS
+                                <li>
+                                    BootStrap
+                                </li>
+                            </ol>
+                            <dl>
+                                <dt>
+                                    HTML
+                                </dt>
+                                <dd>
+                                    <b style="color:black">H</b>yper <b>T</b>ext <b>M</b>arkup <b>L</b>anguage
+                                </dd>
+                            </dl>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            function copyToClipboard(buttonElement) {
+                const preElement = buttonElement.parentNode.parentNode.querySelector('pre');
+                const codeElement = preElement.querySelector('code');
+                const textToCopy = codeElement.innerText;
+
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    buttonElement.textContent = 'Copied!';
+                    setTimeout(() => {
+                        buttonElement.textContent = 'Copy';
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Failed to copy: ', err);
+                    buttonElement.textContent = 'Error'; 
+                    setTimeout(() => {
+                        buttonElement.textContent = 'Copy';
+                    }, 2000);
+                });
+            }
+        </script>
+        <script src="../JS/main.js"></script>
+    </body>
+
+</html>
